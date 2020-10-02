@@ -9,6 +9,11 @@ import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 // Editor
 import {Controlled as ControlledEditor} from "react-codemirror2";
+// Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 const Editor = (props) => {
@@ -30,7 +35,12 @@ const Editor = (props) => {
         <div className={`editor-container ${open ? '' : 'collapsed'}`}>
             <div className="editor-title">
                 {displayName}
-                <button onClick={() => setOpen(prevOpen => !prevOpen)}>o</button>
+                <button
+                    type="button"
+                    className="expand-collapse-btn"
+                    onClick={() => setOpen(prevOpen => !prevOpen)}>
+                    <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
+                </button>
             </div>
             <ControlledEditor
                 onBeforeChange={handleChange}
